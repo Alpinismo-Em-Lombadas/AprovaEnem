@@ -1,0 +1,24 @@
+# Variáveis de ambiente (cada pessoa tem o seu .env; o modelo é o .env.example)
+.env
+.env.local
+
+# Microdados do Enem: arquivos grandes, cada pessoa baixa na sua máquina
+backend/etl/data/*
+!backend/etl/data/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Node / Vite
+node_modules/
+dist/
+
+# Editores e sistema
+.vscode/
+.idea/
+.DS_Store
