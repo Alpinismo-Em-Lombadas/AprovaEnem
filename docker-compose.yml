@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:16-alpine
+    env_file: .env
+    ports:
+      # Formato "porta_na_sua_máquina:porta_no_container". A da esquerda vem do .env.
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      # $$ faz o Compose passar o "$" para dentro do container
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: ./backend
+    env_file: .env
+    environment:
+      # Dentro da rede do Compose, o banco é encontrado pelo nome do serviço
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+    ports:
+      - "${API_PORT:-8000}:8000"
+    volumes:
+      # Monta o código para o --reload funcionar sem rebuild
+      - ./backend:/app
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build: ./frontend
+    environment:
+      # Quem chama a API é o navegador, que roda fora do Docker: por isso localhost
+      VITE_API_URL: http://localhost:${API_PORT:-8000}
+    ports:
+      - "${WEB_PORT:-5173}:5173"
+    volumes:
+      - ./frontend:/app
+      # Mantém o node_modules instalado na imagem (não o da sua máquina)
+      - /app/node_modules
+    depends_on:
+      - api
+
+volumes:
+  pgdata:
