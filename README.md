@@ -5,14 +5,14 @@ Projeto colaborativo de um grupo de devs aprendendo juntos: a ideia é construir
 
 ## Stack
 
-| Parte | Tecnologias |
-| --- | --- |
-| Backend | Python 3.12, FastAPI, Uvicorn, SQLAlchemy 2, Alembic, Pydantic Settings |
-| Dados | pandas (scripts de importação dos microdados) |
-| Frontend | React + Vite (JavaScript), Recharts para os gráficos |
-| Banco | PostgreSQL 16 |
-| Infra | Docker e Docker Compose |
-| Qualidade | Ruff e pytest (backend), ESLint (frontend), GitHub Actions (CI) |
+| Parte     | Tecnologias                                                             |
+| --------- | ----------------------------------------------------------------------- |
+| Backend   | Python 3.12, FastAPI, Uvicorn, SQLAlchemy 2, Alembic, Pydantic Settings |
+| Dados     | pandas (scripts de importação dos microdados)                           |
+| Frontend  | React + Vite (JavaScript), Recharts para os gráficos                    |
+| Banco     | PostgreSQL 16                                                           |
+| Infra     | Docker e Docker Compose                                                 |
+| Qualidade | Ruff e pytest (backend), ESLint (frontend), GitHub Actions (CI)         |
 
 ## Pré-requisitos
 
@@ -41,11 +41,11 @@ docker compose up --build
 
 Quando terminar de subir, abra:
 
-| O quê | Endereço |
-| --- | --- |
-| App (front) | http://localhost:5173 |
-| API | http://localhost:8000/health |
-| Documentação da API | http://localhost:8000/docs |
+| O quê               | Endereço                     |
+| ------------------- | ---------------------------- |
+| App (front)         | http://localhost:5173        |
+| API                 | http://localhost:8000/health |
+| Documentação da API | http://localhost:8000/docs   |
 
 A página inicial deve mostrar **API: ok**.
 
@@ -150,3 +150,5 @@ AprovaEnem/
 
 Leia o [CONTRIBUTING.md](CONTRIBUTING.md): lá está o passo a passo de como pegar uma tarefa, criar sua branch e abrir um Pull Request, e também a seção **"Deu erro? Comece por aqui"**.
 As tarefas iniciais sugeridas estão em [docs/backlog.md](docs/backlog.md).
+
+feat de update do readme
